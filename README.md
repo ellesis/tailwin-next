@@ -1,3 +1,22 @@
+# install
+
+1. next.js
+   npx create-next-app@latest my-project
+   https://nextjs.org/docs/getting-started
+
+2. tailwindcss
+   npm install -D tailwindcss postcss autoprefixer
+   https://tailwindcss.com/docs/guides/nextjs
+
+   npx tailwindcss init -p
+
+```bash
+npm run dev
+
+```
+
+# origin
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
