@@ -66,11 +66,21 @@ export default function Home({posts}) {
   )
 }
 
-export const getServerSideProps = async () => {
+// export const getServerSideProps = async () => {
+//   // server side rendering
+//   const res = await fetch(`https://jsonplaceholder.typicode.com/users`)
+//   const posts = await res.json()
+//   return {
+//     props: {posts}
+//   }
+// }
+
+export const getStaticProps = async () => {
   // server side rendering
   const res = await fetch(`https://jsonplaceholder.typicode.com/users`)
   const posts = await res.json()
   return {
-    props: {posts}
+    props: {posts},
+    revalidate: 20 // After 20 seconds regenerate data option
   }
 }
