@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import axios from 'axios'
 
 export default function Home({posts}) {
   console.log(`>>>: getServerSideProps -> posts`, posts)
@@ -22,11 +23,16 @@ export default function Home({posts}) {
 // }
 
 export const getStaticProps = async () => {
-  // server side rendering
-  const res = await fetch(`https://jsonplaceholder.typicode.com/users`)
-  const posts = await res.json()
-  return {
-    props: {posts},
-    revalidate: 20 // After 20 seconds regenerate data option
+  // static rendering
+  try {
+    const res = await axios.get(`https://jsonplaceholder.typicode.com/users`)
+    const posts = await res.data
+
+    return {
+      props: {posts},
+      revalidate: 20 // After 20 seconds regenerate data option
+    }
+  } catch (err) {
+    return {err}
   }
 }
