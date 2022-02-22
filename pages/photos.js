@@ -1,19 +1,41 @@
 import React from 'react'
-import Head from 'next/head'
+import axios from 'axios'
+import Image from 'next/image'
 
-export default function Photos() {
+import HeadInfo from '../components/HeadInfo'
+
+export default function Photos({photos}) {
+  console.log(`>>>: Photos -> photos=`, photos)
   return (
     <div>
+      <HeadInfo title="My photos" />
       <h1>My Photos</h1>
+      <ul>
+        {photos.map((photo) => (
+          <li key={photo.id}>
+            <Image src={photo.thumbnailUrl} width={100} height={100} alt={photo.title} />
+          </li>
+        ))}
+      </ul>
     </div>
   )
 }
 
-// export const getStaticProps = async () => {
-//   const res = await fetch('https://jsonplaceholder.typicode.com/photos?_start=0&_end=10')
-//   const photos = res.json()
-
-//   return {
-//     props: {photos}
-//   }
-// }
+export const getStaticProps = async () => {
+  // static rendering
+  // const res = await fetch(`https://jsonplaceholder.typicode.com/photos?_start=0&_end=10`)
+  // const photos = await res.json()
+  // return {
+  //   props: {photos}
+  // }
+  try {
+    const res = await axios.get(`https://jsonplaceholder.typicode.com/photos?_start=0&_end=10`)
+    const photos = await res.data
+    console.log(`>>>: getStaticProps -> photos`, photos)
+    return {
+      props: {photos}
+    }
+  } catch (err) {
+    return {err}
+  }
+}
