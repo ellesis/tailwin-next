@@ -6,6 +6,7 @@ import HeadInfo from '../components/HeadInfo'
 
 export default function Photos({photos}) {
   console.log(`>>>: Photos -> photos=`, photos)
+
   return (
     <div>
       <HeadInfo title="My photos" />
@@ -13,7 +14,13 @@ export default function Photos({photos}) {
       <ul>
         {photos.map((photo) => (
           <li key={photo.id}>
-            <Image src={photo.thumbnailUrl} width={100} height={100} alt={photo.title} />
+            <Image
+              loader={() => `${photo.thumbnailUrl}?w=${100}&q={100}`}
+              src={photo.thumbnailUrl}
+              width={100}
+              height={100}
+              alt={photo.title}
+            />
           </li>
         ))}
       </ul>
