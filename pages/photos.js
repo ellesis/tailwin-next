@@ -1,5 +1,6 @@
 import React from 'react'
 import axios from 'axios'
+import Link from 'next/link'
 import Image from 'next/image'
 
 import HeadInfo from '../components/HeadInfo'
@@ -11,16 +12,21 @@ export default function Photos({photos}) {
     <div>
       <HeadInfo title="My photos" />
       <h1>My Photos</h1>
-      <ul>
+      <ul className="grid grid-cols-4 gap-4">
         {photos.map((photo) => (
           <li key={photo.id}>
-            <Image
-              loader={() => `${photo.thumbnailUrl}?w=${100}&q={100}`}
-              src={photo.thumbnailUrl}
-              width={100}
-              height={100}
-              alt={photo.title}
-            />
+            <Link href={`/photos/${photo.id}`}>
+              <a>
+                <Image
+                  loader={() => `${photo.thumbnailUrl}?w=${100}&q=${100}`}
+                  src={photo.thumbnailUrl}
+                  width={100}
+                  height={100}
+                  alt={photo.title}
+                />
+                <span className="flex flex-col">{photo.title}</span>
+              </a>
+            </Link>
           </li>
         ))}
       </ul>
@@ -38,7 +44,6 @@ export const getStaticProps = async () => {
   try {
     const res = await axios.get(`https://jsonplaceholder.typicode.com/photos?_start=0&_end=10`)
     const photos = await res.data
-    console.log(`>>>: getStaticProps -> photos`, photos)
     return {
       props: {photos}
     }
