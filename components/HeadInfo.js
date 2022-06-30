@@ -15,7 +15,7 @@ const HeadInfo = ({title, keyword, contents}) => {
 HeadInfo.defaultProps = {
   title: "Lisa's Next App",
   keyword: 'Lisa App',
-  contents: 'Lisa Next & Tailwind'
+  contents: 'Lisa TailwindCss-Next'
 }
 
 export default HeadInfo
