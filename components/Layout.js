@@ -6,7 +6,7 @@ import HeadInfo from './HeadInfo'
 const Layout = ({children}) => {
   return (
     <>
-      <HeadInfo title="Lisa's Next & Tailwindcss" />
+      <HeadInfo title="Lisa's Tailwindcss-Next" />
       <Nav />
       <div>{children}</div>
     </>
