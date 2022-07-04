@@ -6,7 +6,8 @@ export default function Home({posts}) {
   return (
     <div>
       <main>
-        <h1 className="text-3xl font-bold underline">Hello Next & TailwindCss!</h1>
+        <h1 className="text-3xl font-bold">Home</h1>
+        <h2 className="text-3xl font-bold">Hello Next & TailwindCss!</h2>
       </main>
     </div>
   )
