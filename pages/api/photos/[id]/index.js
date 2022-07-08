@@ -1,10 +1,10 @@
 // dynamic routing api
-import {getPhotosFromDB} from '../../photos'
+import { getPhotosFromDB } from '../../photos'
 
 export default function photoHandler(request, response) {
   const {
     method,
-    query: {id}
+    query: { id }
   } = request
 
   if (method === 'GET') {

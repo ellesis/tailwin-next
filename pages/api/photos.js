@@ -13,7 +13,7 @@ export const getPhotosFromDB = () => {
 }
 
 export default function photosHandler(request, response) {
-  const {method} = request
+  const { method } = request
 
   if (method === 'GET') {
     const photos = getPhotosFromDB()

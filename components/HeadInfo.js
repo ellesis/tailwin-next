@@ -1,7 +1,7 @@
 import React from 'react'
 import Head from 'next/head'
 
-const HeadInfo = ({title, keyword, contents}) => {
+const HeadInfo = ({ title, keyword, contents }) => {
   return (
     <Head>
       <title>{title}</title>

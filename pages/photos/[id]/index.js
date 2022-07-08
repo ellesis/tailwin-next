@@ -4,11 +4,11 @@ import Image from 'next/image'
 import Link from 'next/link'
 // import {useRouter} from 'next/router'
 
-function Index({photo}) {
+function Index({ photo }) {
   // const router = useRouter()
   // console.log(`>>>: Index -> router`, router)
 
-  const {title, url} = photo
+  const { title, url } = photo
 
   return (
     <div>
@@ -24,14 +24,14 @@ function Index({photo}) {
 
 export const getStaticProps = async (context) => {
   try {
-    const {id} = context.params
+    const { id } = context.params
     const res = await axios.get(`https://jsonplaceholder.typicode.com/photos/${id}`)
     const photo = await res.data
     return {
-      props: {photo}
+      props: { photo }
     }
   } catch (err) {
-    return {err}
+    return { err }
   }
 }
 
@@ -42,7 +42,7 @@ export const getStaticPaths = async () => {
     const ids = photos.map((photo) => photo.id)
     const paths = ids.map((id) => {
       return {
-        params: {id: id.toString()}
+        params: { id: id.toString() }
       }
     })
 
@@ -67,7 +67,7 @@ export const getStaticPaths = async () => {
     //   fallback: false //'blocking'
     // }
   } catch (err) {
-    return {err}
+    return { err }
   }
   // return {
   //   paths: [

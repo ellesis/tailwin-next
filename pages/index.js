@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-export default function Home({posts}) {
+export default function Home({ posts }) {
   console.log(`>>>: getServerSideProps -> posts`, posts)
 
   return (
@@ -29,10 +29,10 @@ export const getStaticProps = async () => {
     const posts = await res.data
 
     return {
-      props: {posts},
+      props: { posts },
       revalidate: 20 // After 20 seconds regenerate data option
     }
   } catch (err) {
-    return {err}
+    return { err }
   }
 }

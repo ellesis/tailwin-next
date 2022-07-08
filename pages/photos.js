@@ -5,7 +5,7 @@ import Image from 'next/image'
 
 import HeadInfo from '../components/HeadInfo'
 
-export default function Photos({photos}) {
+export default function Photos({ photos }) {
   console.log(`>>>: Photos -> photos=`, photos)
 
   return (
@@ -45,9 +45,9 @@ export const getStaticProps = async () => {
     const res = await axios.get(`https://jsonplaceholder.typicode.com/photos?_start=0&_end=10`)
     const photos = await res.data
     return {
-      props: {photos}
+      props: { photos }
     }
   } catch (err) {
-    return {err}
+    return { err }
   }
 }
