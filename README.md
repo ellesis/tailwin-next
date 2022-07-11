@@ -15,6 +15,10 @@ npm run dev
 
 ```
 
+## react-icons
+
+npm i react-icons --save
+
 # test API
 
 https://jsonplaceholder.typicode.com/
