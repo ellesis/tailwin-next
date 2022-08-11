@@ -13,6 +13,10 @@ export default function Home({ posts }) {
   )
 }
 
+// Guest
+
+// Authorize User
+
 // export const getServerSideProps = async () => {
 //   // server side rendering
 //   const res = await fetch(`https://jsonplaceholder.typicode.com/users`)
