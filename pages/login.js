@@ -3,6 +3,8 @@ import Layout from '../layout/layout'
 import Head from 'next/head'
 import Link from 'next/link'
 import styles from '../styles/Form.module.css'
+import Image from 'next/image'
+import Google from 'next-auth/providers/google'
 
 export default function Login() {
   return (
@@ -32,11 +34,17 @@ export default function Login() {
             </button>
           </div>
           <div className={styles.input_button}>
-            <button type="submit">Sign in with Google</button>
+            <button type="submit" className={styles.button_custom}>
+              Sign in with Google
+              <Image src={'/assets/svg/google-logo.svg'} width="20" height="20" alt="google logo" />
+            </button>
           </div>
 
           <div className={styles.input_button}>
-            <button type="submit">Sign In with Github</button>
+            <button type="submit" className={styles.button_custom}>
+              Sign In with Github
+              <Image src={'/assets/svg/github-icon.svg'} width="20" height="20" alt="github icon" />
+            </button>
           </div>
         </form>
         {/* bottom */}
