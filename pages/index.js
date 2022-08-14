@@ -3,12 +3,16 @@ import axios from 'axios'
 import Head from 'next/head'
 import Link from 'next/link'
 import { getCustomRoute } from 'next/dist/server/server-route-utils'
-import { useSession } from 'next-auth/react'
+import { getSession, useSession, signOut } from 'next-auth/react'
 
-export default function Home({ posts }) {
-  console.info(`>>>: getServerSideProps -> posts`, posts)
-  // const [session, setSession] = useState(true)
+export default function Home() {
   const { data: session } = useSession()
+  // console.info(`>>>: getServerSideProps -> posts`, posts)
+  // const [session, setSession] = useState(true)
+
+  function handleSingOut() {
+    signOut()
+  }
 
   return (
     <div>
@@ -16,7 +20,7 @@ export default function Home({ posts }) {
         <title>Lisa App - Tailwind Next - Home</title>
       </Head>
 
-      {session ? User({ session }) : Guest()}
+      {session ? User({ session, handleSingOut }) : Guest()}
     </div>
   )
 }
@@ -38,7 +42,8 @@ function Guest() {
 }
 
 // Authorize User
-function User({ session }) {
+function User({ session, handleSingOut }) {
+  console.log(`🚀: User -> session`, session)
   return (
     <main className="container mx-auto text-center py-20">
       <h3 className="text-4xl font-bold">User Home</h3>
@@ -50,6 +55,12 @@ function User({ session }) {
       </div>
 
       <div className="flex justify-center">
+        <button onClick={handleSingOut} className="mt-5 px-10 py-1 rounded-sm bg-gray-100">
+          Sign Out
+        </button>
+      </div>
+
+      <div className="flex justify-center">
         <Link href={'/profile'}>
           <a className="mt-5 px-10 py-1 rounded-sm bg-indigo-500 text-gray-50">Profile</a>
         </Link>
@@ -58,26 +69,38 @@ function User({ session }) {
   )
 }
 
-// export const getServerSideProps = async () => {
-//   // server side rendering
-//   const res = await fetch(`https://jsonplaceholder.typicode.com/users`)
-//   const posts = await res.json()
-//   return {
-//     props: {posts}
-//   }
-// }
+export const getServerSideProps = async ({ req }) => {
+  const session = await getSession({ req })
 
-export const getStaticProps = async () => {
-  // static rendering
-  try {
-    const res = await axios.get(`https://jsonplaceholder.typicode.com/users`)
-    const posts = await res.data
+  // server side rendering
+  // const res = await fetch(`https://jsonplaceholder.typicode.com/users`)
+  // const posts = await res.json()
 
+  if (!session) {
     return {
-      props: { posts },
-      revalidate: 20 // After 20 seconds regenerate data option
+      redirect: {
+        destination: '/login',
+        permanent: false
+      }
     }
-  } catch (err) {
-    return { err }
+  }
+
+  return {
+    props: { session }
   }
 }
+
+// export const getStaticProps = async () => {
+//   // static rendering
+//   try {
+//     const res = await axios.get(`https://jsonplaceholder.typicode.com/users`)
+//     const posts = await res.data
+
+//     return {
+//       props: { posts },
+//       revalidate: 20 // After 20 seconds regenerate data option
+//     }
+//   } catch (err) {
+//     return { err }
+//   }
+// }
