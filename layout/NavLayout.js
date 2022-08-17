@@ -1,7 +1,7 @@
 import React from 'react'
 
-import Nav from '../components/Nav'
-import HeadInfo from '../components/HeadInfo'
+import Nav from '@/components/Nav'
+import HeadInfo from '@/components/HeadInfo'
 
 const NavLayout = ({ children }) => {
   return (

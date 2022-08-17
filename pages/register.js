@@ -1,6 +1,6 @@
 import React from 'react'
 import Head from 'next/head'
-import Layout from '../layout/layout'
+import Layout from '@/layout/layout'
 
 export default function Register({ children }) {
   return (

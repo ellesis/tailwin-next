@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
-import Layout from '../layout/layout'
 import Head from 'next/head'
 import Link from 'next/link'
-import styles from '../styles/Form.module.css'
 import Image from 'next/image'
-
 import { signIn, signOut } from 'next-auth/react'
+
+import Layout from '@/layout/layout'
+import styles from '@/styles/Form.module.css'
 
 export default function Login() {
   const [show, setShow] = useState(false)
