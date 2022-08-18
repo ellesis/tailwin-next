@@ -5,6 +5,8 @@ import Link from 'next/link'
 import { getCustomRoute } from 'next/dist/server/server-route-utils'
 import { getSession, useSession, signOut } from 'next-auth/react'
 
+import NavLayout from '@/layout/NavLayout'
+
 export default function Home() {
   const { data: session } = useSession()
   // console.info(`>>>: getServerSideProps -> posts`, posts)
@@ -15,13 +17,13 @@ export default function Home() {
   }
 
   return (
-    <div>
+    <NavLayout>
       <Head>
         <title>Lisa App - Tailwind Next - Home</title>
       </Head>
 
       {session ? User({ session, handleSingOut }) : Guest()}
-    </div>
+    </NavLayout>
   )
 }
 
