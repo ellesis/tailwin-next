@@ -19,13 +19,21 @@ npm run dev
 
 npm i react-icons --save
 
-# test API
+# API
+
+http://localhost:3000/api/hello
+
+http://localhost:3000/api/photos
+http://localhost:3000/api/photos/[id]
+http://localhost:3000/api/photos/1
+http://localhost:3000/api/photos-res
+
+http://localhost:3000/api/events
+http://localhost:3000/api/events/[slug]
+
+# free test API
 
 https://jsonplaceholder.typicode.com/
-
-# origin
-
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
 
