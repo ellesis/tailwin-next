@@ -4,7 +4,6 @@ import { useRouter } from 'next/router'
 
 const Nav = () => {
   const router = useRouter()
-  console.log(`>>>: About -> router`, router)
 
   return (
     <nav className="py-2 px-4 bg-sky-600">
@@ -22,6 +21,11 @@ const Nav = () => {
         <li className="mr-4 text-white">
           <Link href="/about">
             <a className={router.pathname == '/about' ? 'nav-menu-active' : 'nav-menu'}>About</a>
+          </Link>
+        </li>
+        <li className="mr-4 text-white">
+          <Link href="/events">
+            <a className={router.pathname == '/events' ? 'nav-menu-active' : 'nav-menu'}>Events</a>
           </Link>
         </li>
       </ul>
