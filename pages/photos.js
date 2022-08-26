@@ -3,7 +3,8 @@ import axios from 'axios'
 import Link from 'next/link'
 import Image from 'next/image'
 
-import HeadInfo from '@/components/HeadInfo'
+import Layout from '../components/Layout'
+import HeadInfo from '../components/HeadInfo'
 
 export default function Photos({ photos }) {
   console.log(`>>>: Photos -> photos=`, photos)
