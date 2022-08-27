@@ -1,9 +1,5 @@
 import React, { useState } from 'react'
 import axios from 'axios'
-import Head from 'next/head'
-import Link from 'next/link'
-import { getCustomRoute } from 'next/dist/server/server-route-utils'
-import { getSession, useSession, signOut } from 'next-auth/react'
 
 import NavLayout from '@/layout/NavLayout'
 
