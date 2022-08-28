@@ -4,6 +4,21 @@ import { AiFillEnvironment } from 'react-icons/ai'
 
 function BlackSideNav() {
   const [open, setOpen] = useState(true)
+  const Menus = [
+    { title: 'Dashboard' },
+    { title: 'Pages' },
+    { title: 'Media', spacing: true },
+    {
+      title: 'Projects',
+      submenu: true,
+      submenuItems: [{ title: 'submenu 1' }, { title: 'submenu 2' }, { title: 'submenu 3' }]
+    },
+    { title: 'Analytics' },
+    { title: 'Inbox' },
+    { title: 'Profile', spacing: true },
+    { title: 'Setting' },
+    { title: 'Logout' }
+  ]
 
   return (
     <div className={`bg-dark-purple h-screen p-5 pt-8 ${open ? 'w-72' : 'w-20'} duration-300 relative`}>
@@ -30,6 +45,19 @@ function BlackSideNav() {
           className={`text-base bg-transparent w-full text-white focus:outline-none ${!open && 'hidden'}`}
         />
       </div>
+
+      {/* menu */}
+      <ul className={`pt-2`}>
+        {Menus.map((menu, index) => (
+          <li
+            key={index}
+            className={`text-gray-300 text-sm flex items-center gap-x-4 cursor-pointer p-2
+          hover:bg-light-white rounded-md mt-2`}
+          >
+            <span>{menu.title}</span>
+          </li>
+        ))}
+      </ul>
     </div>
   )
 }
