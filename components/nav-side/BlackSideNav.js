@@ -1,23 +1,41 @@
 import React, { useState } from 'react'
-import { BsArrowLeftShort, BsSearch } from 'react-icons/bs'
-import { AiFillEnvironment } from 'react-icons/ai'
+import {
+  BsArrowLeftShort,
+  BsSearch,
+  BsChevronDown,
+  BsFillImageFill,
+  BsReverseLayoutTextSidebarReverse,
+  BsPerson
+} from 'react-icons/bs'
+import {
+  AiFillEnvironment,
+  AiOutlineBarChart,
+  AiOutlineFileText,
+  AiOutlineMail,
+  AiOutlineSetting,
+  AiOutlineLogout
+} from 'react-icons/ai'
+import { RiDashboardFill } from 'react-icons/ri'
 
 function BlackSideNav() {
   const [open, setOpen] = useState(true)
+  const [submenuOpen, setSubmenuOpen] = useState(false)
+
   const Menus = [
     { title: 'Dashboard' },
-    { title: 'Pages' },
-    { title: 'Media', spacing: true },
+    { title: 'Pages', icon: <AiOutlineFileText /> },
+    { title: 'Media', spacing: true, icon: <BsFillImageFill /> },
     {
       title: 'Projects',
+      icon: <BsReverseLayoutTextSidebarReverse />,
       submenu: true,
       submenuItems: [{ title: 'submenu 1' }, { title: 'submenu 2' }, { title: 'submenu 3' }]
     },
-    { title: 'Analytics' },
-    { title: 'Inbox' },
-    { title: 'Profile', spacing: true },
-    { title: 'Setting' },
-    { title: 'Logout' }
+    { title: 'Analytics', icon: <AiOutlineBarChart /> },
+    { title: 'Inbox', icon: <AiOutlineMail /> },
+    { title: 'Profile', spacing: true, icon: <BsPerson /> },
+    { title: 'Setting', icon: <AiOutlineSetting /> },
+    { title: 'Logout', icon: <AiOutlineLogout /> }
   ]
 
   return (
@@ -49,13 +67,39 @@ function BlackSideNav() {
       {/* menu */}
       <ul className={`pt-2`}>
         {Menus.map((menu, index) => (
-          <li
-            key={index}
-            className={`text-gray-300 text-sm flex items-center gap-x-4 cursor-pointer p-2
-          hover:bg-light-white rounded-md mt-2`}
-          >
-            <span>{menu.title}</span>
-          </li>
+          <>
+            <li
+              key={`index`}
+              className={`text-gray-300 text-sm flex items-center gap-x-4 cursor-pointer p-2
+          hover:bg-light-white rounded-md ${menu.spacing ? ' mt-9' : ' mt-2'}`}
+            >
+              <span className={`text-2xl block float-left`}>{menu.icon ? menu.icon : <RiDashboardFill />}</span>
+              <span className={`text-base font-medium flex-1 ${!open && 'hidden'}`}>{menu.title}</span>
+              {menu.submenu && open && (
+                <BsChevronDown
+                  className={`${submenuOpen && 'rotate-180'}`}
+                  onClick={() => {
+                    setSubmenuOpen(!submenuOpen)
+                  }}
+                />
+              )}
+            </li>
+
+            {/* submenu */}
+            {menu.submenu && submenuOpen && open && (
+              <ul>
+                {menu.submenuItems.map((submenuItem, index) => (
+                  <li
+                    key={index}
+                    className={`text-gray-300 text-sm flex items-center gap-x-4 cursor-pointer p-2 px-5
+                  hover:bg-light-white rounded-md`}
+                  >
+                    {submenuItem.title}
+                  </li>
+                ))}
+              </ul>
+            )}
+          </>
         ))}
       </ul>
     </div>
