@@ -67,9 +67,9 @@ function BlackSideNav() {
       {/* menu */}
       <ul className={`pt-2`}>
         {Menus.map((menu, index) => (
-          <>
+          <div key={index}>
             <li
-              key={`index`}
+              key={`menu-${index}`}
               className={`text-gray-300 text-sm flex items-center gap-x-4 cursor-pointer p-2
           hover:bg-light-white rounded-md ${menu.spacing ? ' mt-9' : ' mt-2'}`}
             >
@@ -90,7 +90,7 @@ function BlackSideNav() {
               <ul>
                 {menu.submenuItems.map((submenuItem, index) => (
                   <li
-                    key={index}
+                    key={`submenu-${index}`}
                     className={`text-gray-300 text-sm flex items-center gap-x-4 cursor-pointer p-2 px-5
                   hover:bg-light-white rounded-md`}
                   >
@@ -99,7 +99,7 @@ function BlackSideNav() {
                 ))}
               </ul>
             )}
-          </>
+          </div>
         ))}
       </ul>
     </div>
