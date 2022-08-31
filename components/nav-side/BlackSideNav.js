@@ -1,4 +1,6 @@
 import React, { useState } from 'react'
+import Link from 'next/link'
+
 import {
   BsArrowLeftShort,
   BsSearch,
@@ -17,26 +19,28 @@ import {
 } from 'react-icons/ai'
 import { RiDashboardFill } from 'react-icons/ri'
 
+import { Menus } from '../../data/menu'
+
 function BlackSideNav() {
   const [open, setOpen] = useState(true)
   const [submenuOpen, setSubmenuOpen] = useState(false)
 
-  const Menus = [
-    { title: 'Dashboard' },
-    { title: 'Pages', icon: <AiOutlineFileText /> },
-    { title: 'Media', spacing: true, icon: <BsFillImageFill /> },
-    {
-      title: 'Projects',
-      icon: <BsReverseLayoutTextSidebarReverse />,
-      submenu: true,
-      submenuItems: [{ title: 'submenu 1' }, { title: 'submenu 2' }, { title: 'submenu 3' }]
-    },
-    { title: 'Analytics', icon: <AiOutlineBarChart /> },
-    { title: 'Inbox', icon: <AiOutlineMail /> },
-    { title: 'Profile', spacing: true, icon: <BsPerson /> },
-    { title: 'Setting', icon: <AiOutlineSetting /> },
-    { title: 'Logout', icon: <AiOutlineLogout /> }
-  ]
+  // const Menus = [
+  //   { title: 'Dashboard' },
+  //   { title: 'Pages', icon: <AiOutlineFileText /> },
+  //   { title: 'Media', spacing: true, icon: <BsFillImageFill /> },
+  //   {
+  //     title: 'Projects',
+  //     icon: <BsReverseLayoutTextSidebarReverse />,
+  //     submenu: true,
+  //     submenuItems: [{ title: 'BlackSideLayout' }, { title: 'GrayCollapseMenuLayout' }, { title: 'submenu 3' }]
+  //   },
+  //   { title: 'Analytics', icon: <AiOutlineBarChart /> },
+  //   { title: 'Inbox', icon: <AiOutlineMail /> },
+  //   { title: 'Profile', spacing: true, icon: <BsPerson /> },
+  //   { title: 'Setting', icon: <AiOutlineSetting /> },
+  //   { title: 'Logout', icon: <AiOutlineLogout /> }
+  // ]
 
   return (
     <div className={`bg-dark-purple h-screen p-5 pt-8 ${open ? 'w-72' : 'w-20'} duration-300 relative`}>
@@ -68,34 +72,41 @@ function BlackSideNav() {
       <ul className={`pt-2`}>
         {Menus.map((menu, index) => (
           <div key={index}>
-            <li
-              key={`menu-${index}`}
-              className={`text-gray-300 text-sm flex items-center gap-x-4 cursor-pointer p-2
+            <Link href={`${menu.href}`}>
+              <a>
+                <li
+                  key={`menu-${index}`}
+                  className={`text-gray-300 text-sm flex items-center gap-x-4 cursor-pointer p-2
           hover:bg-light-white rounded-md ${menu.spacing ? ' mt-9' : ' mt-2'}`}
-            >
-              <span className={`text-2xl block float-left`}>{menu.icon ? menu.icon : <RiDashboardFill />}</span>
-              <span className={`text-base font-medium flex-1 ${!open && 'hidden'}`}>{menu.title}</span>
-              {menu.submenu && open && (
-                <BsChevronDown
-                  className={`${submenuOpen && 'rotate-180'}`}
-                  onClick={() => {
-                    setSubmenuOpen(!submenuOpen)
-                  }}
-                />
-              )}
-            </li>
+                >
+                  <span className={`text-2xl block float-left`}>{menu.icon ? menu.icon : <RiDashboardFill />}</span>
+                  <span className={`text-base font-medium flex-1 ${!open && 'hidden'}`}>{menu.title}</span>
+                  {menu.submenu && open && (
+                    <BsChevronDown
+                      className={`${submenuOpen && 'rotate-180'}`}
+                      onClick={() => {
+                        setSubmenuOpen(!submenuOpen)
+                      }}
+                    />
+                  )}
+                </li>
+              </a>
+            </Link>
 
             {/* submenu */}
             {menu.submenu && submenuOpen && open && (
               <ul>
                 {menu.submenuItems.map((submenuItem, index) => (
-                  <li
-                    key={`submenu-${index}`}
-                    className={`text-gray-300 text-sm flex items-center gap-x-4 cursor-pointer p-2 px-5
+                  <Link href={`${submenuItem.href}`} key={`submenu-${index}`}>
+                    <a>
+                      <li
+                        className={`text-gray-300 text-sm flex items-center gap-x-4 cursor-pointer p-2 px-5
                   hover:bg-light-white rounded-md`}
-                  >
-                    {submenuItem.title}
-                  </li>
+                      >
+                        {submenuItem.title}
+                      </li>
+                    </a>
+                  </Link>
                 ))}
               </ul>
             )}

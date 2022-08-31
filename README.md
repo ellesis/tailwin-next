@@ -15,9 +15,10 @@ npm run dev
 
 ```
 
-## react-icons
+# installed Library
 
-npm i react-icons --save
+- react-icons
+  npm i react-icons --save
 
 # API
 
