@@ -1,6 +1,6 @@
 import React from 'react'
 import Link from 'next/link'
-import NavLayout from '@/layout/NavLayout'
+import NavLayout from '@/layouts/NavLayout'
 import Eventitem from '@/components/Eventitem'
 import { API_URL } from '@/config/index'
 

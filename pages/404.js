@@ -1,7 +1,7 @@
 import React from 'react'
 import { FaExclamationTriangle } from 'react-icons/fa'
 import Link from 'next/link'
-import NavLayout from '@/layout/NavLayout'
+import NavLayout from '@/layouts/NavLayout'
 
 function NotFoundPage() {
   return (

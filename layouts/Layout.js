@@ -1,5 +1,7 @@
 import React from 'react'
 import styles from '@/styles/Layout.module.css'
+
+// Login layout
 export default function Layout({ children }) {
   return (
     <div className="flex h-screen bg-blue-400">

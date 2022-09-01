@@ -2,7 +2,7 @@ import React from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { FaPencilAlt, FaTimes } from 'react-icons/fa'
-import NavLayout from '@/layout/NavLayout'
+import NavLayout from '@/layouts/NavLayout'
 import { API_URL } from '@/config/index'
 
 export default function EventsPage({ evt }) {
