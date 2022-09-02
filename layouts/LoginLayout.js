@@ -1,8 +1,7 @@
 import React from 'react'
-import styles from '@/styles/Layout.module.css'
+import styles from '@/styles/LoginLayout.module.css'
 
-// Login layout
-export default function Layout({ children }) {
+export default function LoginLayout({ children }) {
   return (
     <div className="flex h-screen bg-blue-400">
       <div className="m-auto bg-slate-50 rounded-md w-3/5 h-3/4 grid lg:grid-cols-2">

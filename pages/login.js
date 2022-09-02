@@ -4,7 +4,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { signIn, signOut } from 'next-auth/react'
 
-import Layout from '@/layouts/Layout'
+import Layout from '@/layouts/LoginLayout'
 import styles from '@/styles/Form.module.css'
 
 export default function Login() {
