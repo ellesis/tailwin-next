@@ -3,12 +3,12 @@ import axios from 'axios'
 import Link from 'next/link'
 import Image from 'next/image'
 
-import Layout from '@/components/Layout'
+import NavLayout from '@/layouts/NavLayout'
 import HeadInfo from '@/components/HeadInfo'
 
 export default function Photos({ photos }) {
   return (
-    <Layout>
+    <NavLayout>
       <HeadInfo title="My photos" />
       <h1>My Photos</h1>
       <ul className="grid grid-cols-4 gap-4">
@@ -29,7 +29,7 @@ export default function Photos({ photos }) {
           </li>
         ))}
       </ul>
-    </Layout>
+    </NavLayout>
   )
 }
 
