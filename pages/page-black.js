@@ -1,4 +1,4 @@
-import BlackSideLayout from '../components/layouts/BlackSideLayout'
+import BlackSideLayout from '@/layouts/BlackSideLayout'
 
 export default function PageBlack({ posts }) {
   return (

@@ -1,5 +1,6 @@
 import React from 'react'
-import BlackSideNav from '../nav-side/BlackSideNav'
+import BlackSideNav from '@/components/nav-side/BlackSideNav'
+
 function BlackSideLayout({ children }) {
   return (
     <div className="flex">

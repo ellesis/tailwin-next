@@ -1,4 +1,3 @@
-import BlackSideLayout from '../components/layouts/BlackSideLayout'
 import GrayCollapseMenuLayout from '../components/layouts/GrayCollapseMenuLayout'
 
 export default function PageCollapseMenu({ posts }) {
