@@ -1,5 +1,5 @@
 import React from 'react'
-import GrayCollapseMenu from '../nav-side/GrayCollapseMenu'
+import GrayCollapseMenu from '@/components/nav-side/GrayCollapseMenu'
 
 function GrayCollapseMenuLayout({ children }) {
   return (
