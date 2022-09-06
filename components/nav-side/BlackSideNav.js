@@ -25,25 +25,8 @@ function BlackSideNav() {
   const [open, setOpen] = useState(true)
   const [submenuOpen, setSubmenuOpen] = useState(false)
 
-  // const Menus = [
-  //   { title: 'Dashboard' },
-  //   { title: 'Pages', icon: <AiOutlineFileText /> },
-  //   { title: 'Media', spacing: true, icon: <BsFillImageFill /> },
-  //   {
-  //     title: 'Projects',
-  //     icon: <BsReverseLayoutTextSidebarReverse />,
-  //     submenu: true,
-  //     submenuItems: [{ title: 'BlackSideLayout' }, { title: 'GrayCollapseMenuLayout' }, { title: 'submenu 3' }]
-  //   },
-  //   { title: 'Analytics', icon: <AiOutlineBarChart /> },
-  //   { title: 'Inbox', icon: <AiOutlineMail /> },
-  //   { title: 'Profile', spacing: true, icon: <BsPerson /> },
-  //   { title: 'Setting', icon: <AiOutlineSetting /> },
-  //   { title: 'Logout', icon: <AiOutlineLogout /> }
-  // ]
-
   return (
-    <div className={`bg-dark-purple h-screen p-5 pt-8 ${open ? 'w-72' : 'w-20'} duration-300 relative`}>
+    <div className={`min-h-screen h-full bg-dark-purple p-5 pt-8 ${open ? 'w-72' : 'w-20'} duration-300 relative`}>
       {/* arrow */}
       <BsArrowLeftShort
         className={`bg-white text-dark-purple text-3xl rounded-full absolute top-9 -right-3 border border-dark-purple cursor-pointer
@@ -72,12 +55,12 @@ function BlackSideNav() {
       <ul className={`pt-2`}>
         {Menus.map((menu, index) => (
           <div key={index}>
-            <Link href={`${menu.href}`}>
+            <Link href={`${menu.href !== undefined ? menu.href : '#'}`}>
               <a>
                 <li
                   key={`menu-${index}`}
-                  className={`text-gray-300 text-sm flex items-center gap-x-4 cursor-pointer p-2
-          hover:bg-light-white rounded-md ${menu.spacing ? ' mt-9' : ' mt-2'}`}
+                  className={`text-gray-300 text-sm flex items-center gap-x-4 cursor-pointer p-2 hover:bg-light-white
+                    rounded-md ${menu.spacing ? ' mt-9' : ' mt-2'}`}
                 >
                   <span className={`text-2xl block float-left`}>{menu.icon ? menu.icon : <RiDashboardFill />}</span>
                   <span className={`text-base font-medium flex-1 ${!open && 'hidden'}`}>{menu.title}</span>
