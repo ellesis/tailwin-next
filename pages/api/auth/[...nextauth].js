@@ -1,6 +1,16 @@
 import NextAuth from 'next-auth'
+import { Pool } from 'pg'
 import GoogleProvider from 'next-auth/providers/google'
 import GithubProvider from 'next-auth/providers/github'
+import PostgresAdapter from '../../../lib/adapter'
+
+const pool = new Pool({
+  host: process.env.DB_HOST,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASSWD,
+  port: process.env.DB_PORT,
+  database: process.env.DB_DATABASE
+})
 
 export default NextAuth({
   // Configure one or more authentication providers
@@ -14,5 +24,7 @@ export default NextAuth({
       clientSecret: process.env.GITHUB_SECRET
     })
     // ...add more providers here
-  ]
+  ],
+  adapter: PostgresAdapter(pool),
+  secret: process.env.NEXTAUTH_SECRET
 })
